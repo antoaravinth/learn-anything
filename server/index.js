@@ -53,7 +53,8 @@ app.use(csp({
         imgSrc : [
             "'self'",
             "https://www.google-analytics.com/r/collect"
-        ]
+        ],
+        baseUri :["'self'"]
     }
 }));
 
