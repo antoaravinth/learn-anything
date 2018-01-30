@@ -28,6 +28,8 @@ if (process.env.NODE_ENV !== 'production') {
     inline: true,
     stats: { color: true },
   }));
+  
+  app.use(webpackHotMiddleware(compiler));
 }
 
 if (process.env.NODE_ENV === 'production') {
@@ -53,7 +55,8 @@ if (process.env.NODE_ENV === 'production') {
             ],
             imgSrc: [
                 "'self'",
-                "https://www.google-analytics.com/r/collect"
+                "https://www.google-analytics.com/r/collect",
+                "https://www.google-analytics.com/collect"
             ],
             baseUri: ["'self'"],
             objectSrc : ["'none'"]
