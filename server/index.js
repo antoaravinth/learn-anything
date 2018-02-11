@@ -8,6 +8,7 @@ const dot = require('dot');
 const api = require('./api/index');
 const csp = require('helmet-csp');
 const securityHelper = require('./utils/secureUtil');
+
 const app = express();
 const googleTrackingID = process.env.NODE_ENV === 'production' ? 'UA-74470910-2' : '';
 
@@ -28,6 +29,8 @@ if (process.env.NODE_ENV !== 'production') {
     inline: true,
     stats: { color: true },
   }));
+
+  app.use(webpackHotMiddleware(compiler));
 }
 
 if (process.env.NODE_ENV === 'production') {
@@ -54,6 +57,7 @@ if (process.env.NODE_ENV === 'production') {
       imgSrc: [
         "'self'",
         'https://www.google-analytics.com/r/collect',
+        'https://www.google-analytics.com/collect',
       ],
       baseUri: ["'self'"],
       objectSrc: ["'none'"],
