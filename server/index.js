@@ -31,34 +31,34 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 if (process.env.NODE_ENV === 'production') {
-    app.use(securityHelper.noSniff());
-    app.use(securityHelper.xFrame('SAMEORIGIN'));
-    app.use(csp({
-        directives: {
-            defaultSrc: ["'self'"],
-            fontSrc: [
-                "*"
-            ],
-            styleSrc: [
-                "'self'",
-                "'unsafe-inline'",
-                "https://fonts.googleapis.com/css"
-            ],
-            scriptSrc: [
-                "'self'",
-                "https://www.googletagmanager.com",
-                "https://fonts.googleapis.com",
-                "https://www.google-analytics.com/analytics.js",
-                "'nonce-EDNnf03nceIOfn39fn3e9h3sdfa'"
-            ],
-            imgSrc: [
-                "'self'",
-                "https://www.google-analytics.com/r/collect"
-            ],
-            baseUri: ["'self'"],
-            objectSrc : ["'none'"]
-        }
-    }));
+  app.use(securityHelper.noSniff());
+  app.use(securityHelper.xFrame('SAMEORIGIN'));
+  app.use(csp({
+    directives: {
+      defaultSrc: ["'self'"],
+      fontSrc: [
+        '*',
+      ],
+      styleSrc: [
+        "'self'",
+        "'unsafe-inline'",
+        'https://fonts.googleapis.com/css',
+      ],
+      scriptSrc: [
+        "'self'",
+        'https://www.googletagmanager.com',
+        'https://fonts.googleapis.com',
+        'https://www.google-analytics.com/analytics.js',
+        "'nonce-EDNnf03nceIOfn39fn3e9h3sdfa'",
+      ],
+      imgSrc: [
+        "'self'",
+        'https://www.google-analytics.com/r/collect',
+      ],
+      baseUri: ["'self'"],
+      objectSrc: ["'none'"],
+    },
+  }));
 }
 
 // Compress files sent.
